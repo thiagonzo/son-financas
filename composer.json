@@ -1,0 +1,20 @@
+{
+    "name": "thiag/financas",
+    "authors": [
+        {
+            "name": "Thiago Rodrigues",
+            "email": "thiagonzo@gmail.com"
+        }
+    ],
+    "require": {
+        "robmorgan/phinx": "0.7.1"
+    },
+    "autoload": {
+    	"psr-4": {
+    		"Fin\\": "src/"
+    	}
+    },
+    "require-dev": {
+        "fzaninotto/faker": "1.6.0"
+    }
+}
