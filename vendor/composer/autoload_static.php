@@ -27,6 +27,7 @@ class ComposerStaticInit3827b34a1f414c9978f867887c69cfdc
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
             'Phinx\\' => 6,
         ),
@@ -38,6 +39,10 @@ class ComposerStaticInit3827b34a1f414c9978f867887c69cfdc
         array (
             'Fin\\' => 4,
             'Faker\\' => 6,
+        ),
+        'A' => 
+        array (
+            'Aura\\Router\\' => 12,
         ),
     );
 
@@ -74,6 +79,10 @@ class ComposerStaticInit3827b34a1f414c9978f867887c69cfdc
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
@@ -93,6 +102,10 @@ class ComposerStaticInit3827b34a1f414c9978f867887c69cfdc
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
+        ),
+        'Aura\\Router\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/aura/router/src',
         ),
     );
 
