@@ -19,11 +19,9 @@ $app->get('/', function(RequestInterface $request){
 });
 
 $app->get('/quem-somos/{name}/{id}', function(ServerRequestInterface $request){
-	echo "Quem Somos!!";
-	echo "<br>";
-	echo $request->getAttribute('name');
-	echo "<br>";
-	echo $request->getAttribute('id');
+	$response = new \Zend\Diactoros\Response();
+	$response->getBody()->write("Responser com emitter do doactoros");
+	return $response;
 });
 
 $app->start();
