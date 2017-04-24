@@ -2,7 +2,13 @@
 declare(strict_types=1);
 namespace Fin;
 
+
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Fin\Plugins\PluginInterface;
+use Zend\Diactoros\Response\RedirectResponse;
+use Zend\Diactoros\Response\SapiEmitter;
 
 class Application
 {
@@ -46,7 +52,19 @@ class Application
 	public function start()
 	{
 		$route = $this->service('route');
+		/** @var ServiceResquestInterface $request */
+		$request = $this->service(RequestInterface::class);
+
+		if(!$route){
+			echo "Page not found";
+			exit;
+		}
+
+		foreach ($route->attributes as $key => $value) {
+			$request = $request->withAttribute($key, $value);
+		}
+
 		$callable = $route->handler;
-		$callable();
+		$callable($request);
 	}
 }
