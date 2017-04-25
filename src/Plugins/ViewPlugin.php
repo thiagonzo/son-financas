@@ -1,15 +1,17 @@
 <?php
 declare(strict_types=1);
+
 namespace Fin\Plugins;
 
-use Aura\Router\RouterContainer;
+
 use Interop\Container\ContainerInterface;
-use Psr\Http\Message\RequestInterface;
 use Fin\ServiceContainerInterface;
-use Zend\Diactoros\ServerRequestFactory;
+use Fin\View\Twig\TwigGlobals;
+use Fin\View\ViewRenderer;
 
 class ViewPlugin implements PluginInterface
 {
+	
 	public function register(ServiceContainerInterface $container)
 	{
 		$container->addLazy('twig', function(ContainerInterface $container)
@@ -17,6 +19,12 @@ class ViewPlugin implements PluginInterface
 			$loader = new \Twig_Loader_Filesystem(__DIR__ . '/../../templates');
 			$twig = new \Twig_Environment($loader);
 			return $twig;
+		});
+
+		$container->addLazy('view.renderer', function(ContainerInterface $container)
+		{
+			$twigEnvironment = $container->get('twig');
+			return new ViewRenderer($twigEnvironment);
 		});
 	}
 }

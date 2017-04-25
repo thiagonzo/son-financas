@@ -2,6 +2,7 @@
 
 namespace Fin\Plugins;
 
+
 use Fin\ServiceContainerInterface;
 
 interface PluginInterface
