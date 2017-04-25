@@ -3,6 +3,7 @@
 //use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Fin\Application;
+use Fin\Plugins\DbPlugin;
 use Fin\Plugins\RoutePlugin;
 use Fin\Plugins\ViewPlugin;
 use Fin\ServiceContainer;
@@ -14,6 +15,7 @@ $app = new Application($serviceContainer);
 
 $app->plugin(new RoutePlugin());
 $app->plugin(new ViewPlugin());
+$app->plugin(new DbPlugin());
 
 $app->get('/quem-somos/{name}/{id}', function(ServerRequestInterface $request){
 	$response = new \Zend\Diactoros\Response();
