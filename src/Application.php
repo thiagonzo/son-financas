@@ -56,6 +56,18 @@ class Application
 		return $this;
 	}
 
+	public function redirect($path)
+	{
+		return new RedirectResponse($path);
+	}
+
+	public function route(string $name, array $params = [])
+	{
+		$generator = $this->service('routing.generator');
+		$path = $generator->generate($name, $params);
+		return $this->redirect($path);
+	}
+
 	public function start()
 	{
 		$route = $this->service('route');

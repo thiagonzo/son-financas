@@ -17,12 +17,13 @@ $app->plugin(new RoutePlugin());
 $app->plugin(new ViewPlugin());
 $app->plugin(new DbPlugin());
 
+/*
 $app->get('/quem-somos/{name}/{id}', function(ServerRequestInterface $request){
 	$response = new \Zend\Diactoros\Response();
 	$response->getBody()->write("Responser com emitter do diactoros");
 	return $response;
 });
-
+*/
 $app
 	->get('/category-costs', function() use($app){
 		$view = $app->service('view.renderer');
@@ -31,17 +32,33 @@ $app
 		return $view->render('category-costs/list.html.twig', [
 			'categories' => $categories
 		]);
-	})
+	}, 'category-costs.list')
 	->get('/category-costs/new', function() use($app){
 		$view = $app->service('view.renderer');
 		return $view->render('category-costs/create.html.twig');
-	})
-	->post('/category-costs/store', function (ServerRequestInterface $request){
+	}, 'category-costs.new')
+	->post('/category-costs/store', function (ServerRequestInterface $request) use($app){
 		//cadastro de category
 		$data = $request->getParsedBody();
 		\Fin\Models\CategoryCost::create($data);
-		return new \Zend\Diactoros\Response\RedirectResponse('/category-costs');
-	});
+		return $app->route('category-costs.list');
+	}, 'category-costs.store')
+	->get('/category-costs/{id}/edit', function(ServerRequestInterface $request) use($app){
+		$view = $app->service('view.renderer');
+		$id = $request->getAttribute('id');
+		$category = \Fin\Models\CategoryCost::findOrFail($id);
+		return $view->render('category-costs/edit.html.twig', [
+			'category' => $category
+		]);
+	}, 'category-costs.edit')
+	->post('/category-costs/{id}/update', function(ServerRequestInterface $request) use($app){
+		$id = $request->getAttribute('id');
+		$category = \Fin\Models\CategoryCost::findOrFail($id);
+		$data = $request->getParsedBody();
+		$category->fill($data);
+		$category->save();
+		return $app->route('category-costs.list');
+	}, 'category-costs.update');
 
 $app->start();
 //Inicia tudo

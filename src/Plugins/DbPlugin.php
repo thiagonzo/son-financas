@@ -5,6 +5,7 @@ namespace Fin\Plugins;
 
 
 use Interop\Container\ContainerInterface;
+use Fin\Models\CategoryCost;
 use Fin\ServiceContainerInterface;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
