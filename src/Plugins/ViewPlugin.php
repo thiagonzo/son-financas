@@ -11,7 +11,7 @@ use Fin\View\ViewRenderer;
 
 class ViewPlugin implements PluginInterface
 {
-	
+
 	public function register(ServiceContainerInterface $container)
 	{
 		$container->addLazy('twig', function(ContainerInterface $container)

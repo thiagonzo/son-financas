@@ -15,16 +15,15 @@ $app = new Application($serviceContainer);
 $app->plugin(new RoutePlugin());
 $app->plugin(new ViewPlugin());
 
-$app->get('/{name}', function(ServerRequestInterface $request) use($app)
-{
-	$view = $app->service('view.renderer');
-	return $view->render('teste.html.twig', ['name'=> $request->getAttribute('name')]);
-});
-
 $app->get('/quem-somos/{name}/{id}', function(ServerRequestInterface $request){
 	$response = new \Zend\Diactoros\Response();
-	$response->getBody()->write("Responser com emitter do doactoros");
+	$response->getBody()->write("Responser com emitter do diactoros");
 	return $response;
+});
+
+$app->get('/category-costs', function() use($app){
+	$view = $app->service('view.renderer');
+	return $view->render('category-costs/list.html.twig');
 });
 
 $app->start();
