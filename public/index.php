@@ -23,10 +23,25 @@ $app->get('/quem-somos/{name}/{id}', function(ServerRequestInterface $request){
 	return $response;
 });
 
-$app->get('/category-costs', function() use($app){
-	$view = $app->service('view.renderer');
-	return $view->render('category-costs/list.html.twig');
-});
+$app
+	->get('/category-costs', function() use($app){
+		$view = $app->service('view.renderer');
+		$meuModel = new \Fin\Models\CategoryCost();
+		$categories = $meuModel->all();
+		return $view->render('category-costs/list.html.twig', [
+			'categories' => $categories
+		]);
+	})
+	->get('/category-costs/new', function() use($app){
+		$view = $app->service('view.renderer');
+		return $view->render('category-costs/create.html.twig');
+	})
+	->post('/category-costs/store', function (ServerRequestInterface $request){
+		//cadastro de category
+		$data = $request->getParsedBody();
+		\Fin\Models\CategoryCost::create($data);
+		return new \Zend\Diactoros\Response\RedirectResponse('/category-costs');
+	});
 
 $app->start();
 //Inicia tudo

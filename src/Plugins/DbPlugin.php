@@ -8,7 +8,7 @@ use Interop\Container\ContainerInterface;
 use Fin\ServiceContainerInterface;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-class ViewPlugin implements PluginInterface
+class DbPlugin implements PluginInterface
 {
 
 	public function register(ServiceContainerInterface $container)
