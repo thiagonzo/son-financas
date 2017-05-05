@@ -5,6 +5,7 @@ namespace Fin\Plugins;
 
 use Interop\Container\ContainerInterface;
 use Fin\Models\CategoryCost;
+use Fin\Models\BillReceive;
 use Fin\Models\User;
 use Fin\Repository\RepositoryFactory;
 use Fin\ServiceContainerInterface;
@@ -23,6 +24,10 @@ class DbPlugin implements PluginInterface
 		$container->add('repository.factory', new RepositoryFactory());
 		$container->addLazy('category-cost.repository', function(ContainerInterface $container){
 			return $container->get('repository.factory')->factory(CategoryCost::class);
+		});
+
+		$container->addLazy('bill-receive.repository', function(ContainerInterface $container){
+			return $container->get('repository.factory')->factory(BillReceive::class);
 		});
 
 		$container->addLazy('user.repository', function(ContainerInterface $container){
