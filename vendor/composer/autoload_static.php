@@ -38,6 +38,10 @@ class ComposerStaticInit3827b34a1f414c9978f867887c69cfdc
             'Psr\\Container\\' => 14,
             'Phinx\\' => 6,
         ),
+        'J' => 
+        array (
+            'Jasny\\' => 6,
+        ),
         'I' => 
         array (
             'Interop\\Container\\' => 18,
@@ -113,6 +117,10 @@ class ComposerStaticInit3827b34a1f414c9978f867887c69cfdc
         'Phinx\\' => 
         array (
             0 => __DIR__ . '/..' . '/robmorgan/phinx/src/Phinx',
+        ),
+        'Jasny\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jasny/auth/src',
         ),
         'Interop\\Container\\' => 
         array (

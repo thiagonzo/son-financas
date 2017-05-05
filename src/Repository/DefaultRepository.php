@@ -32,11 +32,6 @@ class DefaultRepository implements RepositoryInterface
 		return $this->model->all()->toArray();
 	}
 
-	public function find(int $id)
-	{
-		return $this->model->findOrFail($id);
-	}
-
 	public function create(array $data)
 	{
 		$this->model->fill($data);
@@ -44,17 +39,40 @@ class DefaultRepository implements RepositoryInterface
 		return $this->model;
 	}
 
-	public function update(int $id, array $data)
+	public function update($id, array $data)
 	{
-		$model = $this->find($id);
+		$model = $this->findInternal($id);
 		$model->fill($data);
 		$model->save();
 		return $model;
 	}
 
-	public function delete(int $id)
+	public function delete($id)
 	{
-		$model = $this->model->find($id);
+		$model = $this->findInternal($id);
 		$model->delete();
 	}
+
+    protected function findInternal($id){
+        return is_array($id)? $model = $this->findOneBy($id): $this->find($id);
+    }
+
+	public function find(int $id, bool $failIfNotExist = true)
+	{
+		return $failIfNotExist ? $this->model->findOrFail($id): $this->model->find($id);
+	}
+
+	public function findByField($field,$value)
+	{
+		return $this->model->where($field,'=',$value)->get();
+	}
+
+    public function findOneBy(array $search)
+    {
+        $queryBuilder = $this->model;
+        foreach ($search as $field => $value){
+            $queryBuilder = $queryBuilder->where($field,'=',$value);
+        }
+        return $queryBuilder->firstOrFail();
+    }
 }
