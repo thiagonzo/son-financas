@@ -8,7 +8,9 @@ use Fin\Models\CategoryCost;
 use Fin\Models\BillReceive;
 use Fin\Models\BillPay;
 use Fin\Models\User;
+use Fin\Repository\CategoryCostRepository;
 use Fin\Repository\RepositoryFactory;
+use Fin\Repository\StatementRepository;
 use Fin\ServiceContainerInterface;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
@@ -38,5 +40,9 @@ class DbPlugin implements PluginInterface
 		$container->addLazy('user.repository', function(ContainerInterface $container){
 			return $container->get('repository.factory')->factory(User::class);
 		});
+
+        $container->addLazy('statement.repository', function () {
+                return new StatementRepository();
+        });
 	}
 }
