@@ -1,5 +1,4 @@
 <?php
-
 use Fin\Application;
 use Fin\Plugins\AuthPlugin;
 use Fin\Plugins\DbPlugin;

@@ -55,6 +55,10 @@ class ComposerStaticInit3827b34a1f414c9978f867887c69cfdc
             'Fin\\' => 4,
             'Faker\\' => 6,
         ),
+        'D' => 
+        array (
+            'Dotenv\\' => 7,
+        ),
         'C' => 
         array (
             'Carbon\\' => 7,
@@ -149,6 +153,10 @@ class ComposerStaticInit3827b34a1f414c9978f867887c69cfdc
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
+        ),
+        'Dotenv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
         'Carbon\\' => 
         array (

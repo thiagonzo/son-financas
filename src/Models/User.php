@@ -5,26 +5,25 @@ namespace Fin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Jasny\Auth\User as JasnyUser;
-use Fin\Models\UserInterface;
 
 class User extends Model implements JasnyUser, UserInterface
 {
-	//Mass Assignment
-	protected $fillable = [
-		'first_name',
-		'last_name',
-		'email',
-		'password'
-	];
+    //Mass Assignment
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'password'
+    ];
 
-	 /**
+    /**
      * Get user id
      *
      * @return int|string
      */
     public function getId():int
     {
-    	return (int)$this->id;
+        return (int)$this->id;
     }
 
     /**
@@ -34,9 +33,8 @@ class User extends Model implements JasnyUser, UserInterface
      */
     public function getUsername():string
     {
-    	return $this->email;
+        return $this->email;
     }
-
 
     /**
      * Get user's hashed password
@@ -45,10 +43,8 @@ class User extends Model implements JasnyUser, UserInterface
      */
     public function getHashedPassword():string
     {
-    	return $this->password;
+        return $this->password;
     }
-
-
 
     /**
      * Event called on login.
@@ -57,9 +53,8 @@ class User extends Model implements JasnyUser, UserInterface
      */
     public function onLogin()
     {
-
+        // TODO: Implement onLogin() method.
     }
-
 
     /**
      * Event called on logout.
@@ -68,7 +63,7 @@ class User extends Model implements JasnyUser, UserInterface
      */
     public function onLogout()
     {
-
+        // TODO: Implement onLogout() method.
     }
 
     public function getFullname(): string
@@ -85,5 +80,4 @@ class User extends Model implements JasnyUser, UserInterface
     {
         return $this->password;
     }
-
 }

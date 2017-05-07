@@ -27,6 +27,7 @@ return array(
     'Illuminate\\Container\\' => array($vendorDir . '/illuminate/container'),
     'Fin\\' => array($baseDir . '/src'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
+    'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'Aura\\Router\\' => array($vendorDir . '/aura/router/src'),
 );

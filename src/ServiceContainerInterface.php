@@ -1,11 +1,15 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 namespace Fin;
+
 
 interface ServiceContainerInterface
 {
-	public function add(string $name, $service);
-	public function addLazy(string $name, callable $callabe);
-	public function get(string $name);
-	public function has(string $name);
+    public function add(string $name, $service);
+
+    public function addLazy(string $name, callable $callable);
+
+    public function get(string $name);
+
+    public function has(string $name);
 }
