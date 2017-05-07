@@ -12,7 +12,7 @@ class UsersSeeder extends AbstractSeed
 
         $faker = \Faker\Factory::create('pt_BR');
         $users = $this->table('users');
-        $users->insert([
+        /*$users->insert([
             'first_name' => 'Thiago',
             'last_name' => 'Rodrigues',
             'email' => 'thiagonzo@gmail.com',
@@ -20,7 +20,7 @@ class UsersSeeder extends AbstractSeed
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ])->save();
-        $data=[];
+        $data=[]; */
         foreach(range(1,3) as $value){
             $data[] = [
                 'first_name' => $faker->firstName,
